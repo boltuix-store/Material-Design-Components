@@ -1,0 +1,257 @@
+/*
+ * Copyright 2018 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package io.materialdesign.catalog.font;
+
+import io.materialdesign.catalog.R;
+
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Typeface;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
+import android.os.Bundle;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.annotation.ArrayRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StyleRes;
+import androidx.core.view.ViewCompat;
+import androidx.core.widget.TextViewCompat;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.resources.TextAppearance;
+import io.materialdesign.catalog.feature.DemoFragment;
+import java.util.ArrayList;
+import java.util.List;
+
+/** A fragment that displays the Font Typographic Styles demo for the Catalog app. */
+public class FontMainDemoFragment extends DemoFragment {
+
+  @Override
+  public View onCreateDemoView(
+      LayoutInflater layoutInflater, @Nullable ViewGroup viewGroup, @Nullable Bundle bundle) {
+    View view =
+        layoutInflater.inflate(
+            R.layout.cat_font_styles_fragment, viewGroup, false /* attachToRoot */);
+
+    RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    recyclerView.addItemDecoration(
+        new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+    recyclerView.setAdapter(new FontStyleAdapter(getContext()));
+    ViewCompat.setOnApplyWindowInsetsListener(
+        recyclerView,
+        (view1, windowInsetsCompat) -> {
+          recyclerView.setClipToPadding(windowInsetsCompat.getSystemWindowInsetBottom() == 0);
+          recyclerView.setPadding(
+              recyclerView.getPaddingLeft(),
+              recyclerView.getPaddingTop(),
+              recyclerView.getPaddingRight(),
+              windowInsetsCompat.getSystemWindowInsetBottom());
+
+          return windowInsetsCompat;
+        });
+
+    return view;
+  }
+
+  /**
+   * Returns an array resource containing a list of theme attributes that each reference a text
+   * appearance style. Each style will be displayed in a list.
+   */
+  @ArrayRes
+  protected int getFontStyles() {
+    return R.array.cat_font_styles_array;
+  }
+
+  @ArrayRes
+  protected int getFontStyleNames() {
+    return R.array.cat_font_style_names_array;
+  }
+
+  @SuppressWarnings("StringCaseLocaleUsage")
+  @NonNull
+  protected String getFontFamilyName(@Nullable String fontFamily) {
+    if (fontFamily != null) {
+      switch (fontFamily.toLowerCase()) {
+        case "sans-serif-light":
+          return "Light";
+        case "sans-serif-medium":
+          return "Medium";
+        default:
+          // fall through
+      }
+    }
+
+    return "Regular";
+  }
+
+  @NonNull
+  protected String getTextStyleName(int textStyle) {
+    switch (textStyle) {
+      case Typeface.ITALIC:
+        return "Italic";
+      case Typeface.BOLD:
+        return "Bold";
+      case Typeface.BOLD_ITALIC:
+        return "Bold-Italic";
+      default:
+        // fall through
+    }
+
+    return "Normal";
+  }
+
+  @NonNull
+  protected String convertFontFamilyToDescription(@Nullable String fontFamily, int textStyle) {
+    return getFontFamilyName(fontFamily) + "/" + getTextStyleName(textStyle);
+  }
+
+  @NonNull
+  protected String getFontVariationSettingsDescription(@Nullable String fontVariationSettings) {
+    if (VERSION.SDK_INT < VERSION_CODES.O || fontVariationSettings == null) {
+      return "Unsupported";
+    } else {
+      if (fontVariationSettings.isEmpty()) {
+        return "None";
+      } else {
+        return fontVariationSettings;
+      }
+    }
+  }
+
+  private class FontStyleAdapter extends Adapter<FontStyleViewHolder> {
+
+    private final List<Integer> styles = new ArrayList<>();
+    private final List<String> names = new ArrayList<>();
+    private final List<String> attributeNames = new ArrayList<>();
+
+    public FontStyleAdapter(Context context) {
+      TypedArray stylesArray = getResources().obtainTypedArray(getFontStyles());
+      TypedArray namesArray = getResources().obtainTypedArray(getFontStyleNames());
+
+      TypedValue value = new TypedValue();
+      for (int i = 0; i < stylesArray.length(); i++) {
+        // 1. Get the attribute from the array: ?attr/textAppearanceBodyLarge
+        stylesArray.getValue(i, value);
+        int attribute = value.data;
+
+        // 2. Get the style from the attribute: @style/TextAppearance.Material3.BodyLarge
+        TypedArray a = context.obtainStyledAttributes(new int[] {attribute});
+        int style = a.getResourceId(0, 0);
+        a.recycle();
+
+        styles.add(style);
+        names.add(namesArray.getString(i));
+        attributeNames.add(context.getResources().getResourceEntryName(attribute));
+      }
+      stylesArray.recycle();
+      namesArray.recycle();
+    }
+
+    @NonNull
+    @Override
+    public FontStyleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+      return new FontStyleViewHolder(parent);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull FontStyleViewHolder viewHolder, int i) {
+      viewHolder.bind(styles.get(i), names.get(i), attributeNames.get(i));
+    }
+
+    @Override
+    public int getItemCount() {
+      return styles.size();
+    }
+  }
+
+  private class FontStyleViewHolder extends ViewHolder {
+    private final TextView nameView;
+    private final TextView descriptionView;
+    private final ImageView infoView;
+
+    private String name;
+
+    @SuppressWarnings("RestrictTo")
+    private TextAppearance textAppearance;
+
+    private String attributeName;
+
+    @SuppressWarnings("RestrictTo")
+    public FontStyleViewHolder(ViewGroup parent) {
+      super(
+          LayoutInflater.from(parent.getContext())
+              .inflate(R.layout.cat_font_styles_item, parent, false));
+
+      nameView = itemView.findViewById(R.id.name);
+      descriptionView = itemView.findViewById(R.id.description);
+      infoView = itemView.findViewById(R.id.info);
+
+      infoView.setOnClickListener(
+          view ->
+              new MaterialAlertDialogBuilder(infoView.getContext())
+                  .setTitle(name)
+                  .setMessage(
+                      view.getContext()
+                          .getString(
+                              R.string.cat_font_style_dialog_message,
+                              /* attribute= */ attributeName,
+                              /*font family=*/ getFontFamilyName(textAppearance.fontFamily),
+                              /*text style=*/ getTextStyleName(textAppearance.textStyle),
+                              /*text size=*/ pxToSp(textAppearance.getTextSize()),
+                              /*variation settings=*/ getFontVariationSettingsDescription(
+                                  textAppearance.fontVariationSettings)))
+                  .show());
+    }
+
+    @SuppressWarnings("RestrictTo")
+    public void bind(@StyleRes int style, String name, String attributeName) {
+      this.name = name;
+      this.attributeName = attributeName;
+      this.textAppearance = new TextAppearance(itemView.getContext(), style);
+
+      nameView.setText(name);
+      descriptionView.setText(createDescription(name, textAppearance));
+
+      TextViewCompat.setTextAppearance(nameView, style);
+    }
+
+    @SuppressWarnings("RestrictTo")
+    private String createDescription(String name, TextAppearance textAppearance) {
+      return name
+          + " - "
+          + convertFontFamilyToDescription(textAppearance.fontFamily, textAppearance.textStyle)
+          + " "
+          + pxToSp(textAppearance.getTextSize())
+          + "sp";
+    }
+
+    private int pxToSp(float px) {
+      return (int) (px / itemView.getResources().getDisplayMetrics().scaledDensity);
+    }
+  }
+}

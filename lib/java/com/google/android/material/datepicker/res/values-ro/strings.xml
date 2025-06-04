@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2025 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+<resources>
+  <string name="mtrl_picker_range_header_title">Selectați intervalul</string>
+  <string name="mtrl_picker_date_header_title">Selectați data</string>
+  <string name="mtrl_picker_range_header_unselected">Data de începere – Data de încheiere</string>
+  <string name="mtrl_picker_range_header_only_start_selected">%1$s – Data de încheiere</string>
+  <string name="mtrl_picker_range_header_only_end_selected">Data de începere – %1$s</string>
+  <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
+  <string name="mtrl_picker_date_header_unselected">Data selectată</string>
+  <string name="mtrl_picker_date_header_selected">%1$s</string>
+  <string name="mtrl_picker_confirm">OK</string>
+  <string name="mtrl_picker_cancel">Anulați</string>
+  <string name="mtrl_picker_text_input_date_hint">Dată</string>
+  <string name="mtrl_picker_text_input_date_range_start_hint">Data de începere</string>
+  <string name="mtrl_picker_text_input_date_range_end_hint">Data de încheiere</string>
+  <string name="mtrl_picker_text_input_year_abbr">a</string>
+  <string name="mtrl_picker_text_input_month_abbr">l</string>
+  <string name="mtrl_picker_text_input_day_abbr">z</string>
+  <string name="mtrl_picker_save">Salvați</string>
+  <string name="mtrl_picker_invalid_range">Interval nevalid.</string>
+  <string name="mtrl_picker_out_of_range">Fără acoperire: %1$s</string>
+  <string name="mtrl_picker_invalid_format">Format nevalid.</string>
+  <string name="mtrl_picker_invalid_format_use">Folosiți: %1$s</string>
+  <string name="mtrl_picker_invalid_format_example">Exemplu: %1$s</string>
+  <string name="mtrl_picker_toggle_to_calendar_input_mode">Comutați la modul introducere în calendar</string>
+  <string name="mtrl_picker_toggle_to_text_input_mode">Comutați la modul de introducere a textului</string>
+  <string name="mtrl_picker_a11y_prev_month">Treceți la luna anterioară</string>
+  <string name="mtrl_picker_a11y_next_month">Treceți la luna următoare</string>
+  <string name="mtrl_picker_toggle_to_year_selection">Treceți la afișarea pe ani</string>
+  <string name="mtrl_picker_toggle_to_day_selection">Treceți la afișarea Calendar</string>
+  <string name="mtrl_picker_toggled_to_year_selection">Ați trecut la afișarea pe ani</string>
+  <string name="mtrl_picker_toggled_to_day_selection">Ați trecut la afișarea Calendar</string>
+  <string name="mtrl_picker_day_of_week_column_header">%1$s</string>
+  <string name="mtrl_picker_announce_current_selection">Selecția actuală: %1$s</string>
+  <string name="mtrl_picker_announce_current_range_selection">Selectarea datei de începere: %1$s – Selectarea datei de încheiere: %2$s</string>
+  <string name="mtrl_picker_announce_current_selection_none">niciuna</string>
+  <string name="mtrl_picker_navigate_to_year_description">Navigați la anul %1$d</string>
+  <string name="mtrl_picker_navigate_to_current_year_description">Navigați la anul actual %1$d</string>
+  <string name="mtrl_picker_today_description">Astăzi, la %1$s</string>
+  <string name="mtrl_picker_start_date_description">Data de începere: %1$s</string>
+  <string name="mtrl_picker_end_date_description">Data de încheiere: %1$s</string>
+</resources>

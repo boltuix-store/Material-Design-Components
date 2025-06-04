@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2025 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+<resources>
+  <string name="mtrl_picker_range_header_title">ಶ್ರೇಣಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+  <string name="mtrl_picker_date_header_title">ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+  <string name="mtrl_picker_range_header_unselected">ಪ್ರಾರಂಭ ದಿನಾಂಕ – ಮುಕ್ತಾಯ ದಿನಾಂಕ</string>
+  <string name="mtrl_picker_range_header_only_start_selected">%1$s – ಮುಕ್ತಾಯ ದಿನಾಂಕ</string>
+  <string name="mtrl_picker_range_header_only_end_selected">ಪ್ರಾರಂಭ ದಿನಾಂಕ – %1$s</string>
+  <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
+  <string name="mtrl_picker_date_header_unselected">ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ</string>
+  <string name="mtrl_picker_date_header_selected">%1$s</string>
+  <string name="mtrl_picker_confirm">ಸರಿ</string>
+  <string name="mtrl_picker_cancel">ರದ್ದುಮಾಡಿ</string>
+  <string name="mtrl_picker_text_input_date_hint">ದಿನಾಂಕ</string>
+  <string name="mtrl_picker_text_input_date_range_start_hint">ಪ್ರಾರಂಭ ದಿನಾಂಕ</string>
+  <string name="mtrl_picker_text_input_date_range_end_hint">ಮುಕ್ತಾಯ ದಿನಾಂಕ</string>
+  <string name="mtrl_picker_text_input_year_abbr">ವ</string>
+  <string name="mtrl_picker_text_input_month_abbr">ತಿ</string>
+  <string name="mtrl_picker_text_input_day_abbr">ದಿ</string>
+  <string name="mtrl_picker_save">ಸೇವ್ ಮಾಡಿ</string>
+  <string name="mtrl_picker_invalid_range">ಅಮಾನ್ಯ ಶ್ರೇಣಿ.</string>
+  <string name="mtrl_picker_out_of_range">ವ್ಯಾಪ್ತಿಯ ಹೊರಗಿದೆ: %1$s</string>
+  <string name="mtrl_picker_invalid_format">ಅಮಾನ್ಯವಾದ ಫಾರ್ಮ್ಯಾಟ್.</string>
+  <string name="mtrl_picker_invalid_format_use">ಇದನ್ನು ಬಳಸಿ: %1$s</string>
+  <string name="mtrl_picker_invalid_format_example">ಉದಾಹರಣೆ: %1$s</string>
+  <string name="mtrl_picker_toggle_to_calendar_input_mode">ಕ್ಯಾಲೆಂಡರ್ ಇನ್‌ಪುಟ್ ಮೋಡ್‌ಗೆ ಬದಲಿಸಿ</string>
+  <string name="mtrl_picker_toggle_to_text_input_mode">ಪಠ್ಯ ಇನ್‌ಪುಟ್ ಮೋಡ್‌ಗೆ ಬದಲಿಸಿ</string>
+  <string name="mtrl_picker_a11y_prev_month">ಹಿಂದಿನ ತಿಂಗಳಿಗೆ ಬದಲಿಸಿ</string>
+  <string name="mtrl_picker_a11y_next_month">ಮುಂದಿನ ತಿಂಗಳಿಗೆ ಬದಲಿಸಿ</string>
+  <string name="mtrl_picker_toggle_to_year_selection">ವರ್ಷದ ವೀಕ್ಷಣೆಗೆ ಬದಲಾಯಿಸಿ</string>
+  <string name="mtrl_picker_toggle_to_day_selection">Calendar ವೀಕ್ಷಣೆಗೆ ಬದಲಿಸಿ</string>
+  <string name="mtrl_picker_toggled_to_year_selection">ವರ್ಷದ ವೀಕ್ಷಣೆಗೆ ಬದಲಾಯಿಸಲಾಗಿದೆ</string>
+  <string name="mtrl_picker_toggled_to_day_selection">Calendar ವೀಕ್ಷಣೆಗೆ ಬದಲಾಯಿಸಲಾಗಿದೆ</string>
+  <string name="mtrl_picker_day_of_week_column_header">%1$s</string>
+  <string name="mtrl_picker_announce_current_selection">ಪ್ರಸ್ತುತ ಆಯ್ಕೆ: %1$s</string>
+  <string name="mtrl_picker_announce_current_range_selection">ಪ್ರಾರಂಭ ದಿನಾಂಕದ ಆಯ್ಕೆ: %1$s – ಮುಕ್ತಾಯ ದಿನಾಂಕದ ಆಯ್ಕೆ: %2$s</string>
+  <string name="mtrl_picker_announce_current_selection_none">ಯಾವುದೂ ಇಲ್ಲ</string>
+  <string name="mtrl_picker_navigate_to_year_description">%1$d ವರ್ಷಕ್ಕೆ ನ್ಯಾವಿಗೇಟ್ ಮಾಡಿ</string>
+  <string name="mtrl_picker_navigate_to_current_year_description">ಪ್ರಸ್ತುತ ವರ್ಷ %1$d ಕ್ಕೆ ನ್ಯಾವಿಗೇಟ್ ಮಾಡಿ</string>
+  <string name="mtrl_picker_today_description">ಇಂದು %1$s</string>
+  <string name="mtrl_picker_start_date_description">ಪ್ರಾರಂಭದ ದಿನಾಂಕ %1$s</string>
+  <string name="mtrl_picker_end_date_description">ಕೊನೆಯ ದಿನಾಂಕ %1$s</string>
+</resources>

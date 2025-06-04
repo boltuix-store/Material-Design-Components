@@ -1,0 +1,185 @@
+buildscript {
+  repositories {
+    google()
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'org.jetbrains.kotlin.plugin.compose:org.jetbrains.kotlin.plugin.compose.gradle.plugin:2.1.0'
+  }
+}
+
+plugins {
+  id 'com.android.application'
+  id 'org.jetbrains.kotlin.android' version "2.1.21"
+  id 'org.jetbrains.kotlin.plugin.compose' version "2.1.0"
+}
+
+dependencies {
+
+  // Align kotlin versions
+  implementation(platform('org.jetbrains.kotlin:kotlin-bom:2.1.0'))
+
+  api libs.dagger
+  annotationProcessor libs.dagger.compiler
+
+  api libs.dagger.android
+  api libs.dagger.android.support
+  annotationProcessor libs.dagger.android.processor
+
+  api libs.androidx.multidex
+  api libs.androidx.constraintlayout
+  api libs.androidx.gridlayout
+  api libs.androidx.recyclerview
+  api libs.androidx.window
+  api libs.androidx.window.java
+  api libs.androidx.preference
+
+  api libs.androidx.activity.compose
+  api libs.androidx.compose.material.icons.core
+  api libs.androidx.compose.material.icons.extended
+  api libs.androidx.compose.material3
+
+  api libs.guava
+  modules {
+    module("com.google.guava:listenablefuture") {
+      replacedBy("com.google.guava:guava", "listenablefuture is part of guava")
+    }
+  }
+
+  api libs.glide
+
+  api project(':lib')
+
+  api libs.androidx.recyclerview.selection
+
+  implementation libs.errorprone.annotations
+
+  androidTestImplementation libs.androidx.test.core
+  androidTestImplementation libs.androidx.test.runner
+  androidTestImplementation libs.androidx.test.rules
+  androidTestImplementation libs.androidx.espresso.core
+  androidTestImplementation libs.androidx.espresso.contrib
+
+  testImplementation libs.androidx.test.core
+  testImplementation libs.androidx.test.runner
+  testImplementation libs.junit
+  testImplementation libs.truth
+  testImplementation libs.mockito.core
+  testImplementation libs.robolectric
+}
+
+def srcDirs = [
+  'adaptive',
+  'application',
+  'application/attrs',
+  'application/legacymultidex',
+  'application/scope',
+  'application/theme',
+  'assets',
+  'bottomappbar',
+  'bottomnav',
+  'bottomsheet',
+  'button',
+  'card',
+  'carousel',
+  'checkbox',
+  'chip',
+  'color',
+  'datepicker',
+  'dialog',
+  'divider',
+  'draggable',
+  'dockedtoolbar',
+  'elevation',
+  'imageview',
+  'fab',
+  'feature',
+  'floatingtoolbar',
+  'font',
+  'internal',
+  'loadingindicator',
+  'main',
+  'materialswitch',
+  'menu',
+  'musicplayer',
+  'navigationrail',
+  'navigationdrawer',
+  'overflow',
+  'preferences',
+  'progressindicator',
+  'radiobutton',
+  'search',
+  'shapetheming',
+  'sidesheet',
+  'slider',
+  'tableofcontents',
+  'tabs',
+  'textfield',
+  'themeswitcher',
+  'timepicker',
+  'topappbar',
+  'transition',
+  'windowpreferences'
+]
+
+android {
+  namespace "io.materialdesign.catalog"
+  defaultConfig {
+    manifestPlaceholders = [
+      application_name             : 'CatalogApplication',
+      application_theme            : 'Catalog',
+      catalog_application_component: 'io.materialdesign.catalog.application.DaggerCatalogApplicationComponent'
+    ]
+
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    vectorDrawables.useSupportLibrary = true
+    multiDexEnabled true
+    minSdkVersion 21
+    targetSdkVersion 34
+  }
+
+  testOptions {
+    unitTests.returnDefaultValues = true
+  }
+
+  sourceSets {
+    main {
+      manifest.srcFile 'java/io/materialdesign/catalog/AndroidManifest.xml'
+      java.srcDir 'java'
+      java.includes = srcDirs.collect {
+        'io/materialdesign/catalog/' + it + '/**/*.java'
+      }
+      java.excludes = [
+        '**/build/**',
+      ]
+      kotlin.srcDir 'java'
+      kotlin.includes = srcDirs.collect {
+        'io/materialdesign/catalog/' + it + '/**/*.kt'
+      }
+      kotlin.excludes = [
+        '**/build/**',
+      ]
+      res.srcDirs = ['java/io/materialdesign/catalog/res']
+      srcDirs.forEach {
+        res.srcDirs += 'java/io/materialdesign/catalog/' + it + '/res'
+      }
+    }
+    //TODO(b/141695010)
+    // androidTest.java.srcDir 'androidTest/javatests'
+    // test.java.srcDir 'test/javatests'
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+  kotlinOptions {
+    jvmTarget = "1.8"
+  }
+  buildFeatures {
+    compose true
+  }
+  androidResources {
+    additionalParameters '--no-version-vectors'
+  }
+}

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2019 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+<resources>
+  <declare-styleable name="Slider">
+    <attr name="android:value" />
+    <attr name="android:valueFrom" />
+    <attr name="android:valueTo" />
+    <attr name="android:stepSize" />
+    <!-- Whether the Slider is enabled. -->
+    <attr name="android:enabled" />
+    <attr name="android:orientation" />
+    <attr name="centered" format="boolean" />
+    <!-- The number of purely visual ticks to display in continuous mode. -->
+    <attr name="continuousModeTickCount" format="integer" />
+    <!-- The color of the slider's halo. -->
+    <attr name="haloColor" format="color" />
+    <!-- The radius of the halo. -->
+    <attr name="haloRadius" format="dimension" />
+    <!-- Determines if Slider should increase its default height to include space for the label. -->
+    <attr name="labelBehavior">
+      <!-- Mode that draws the label floating above the bounds of this view. -->
+      <enum name="floating" value="0"/>
+      <!-- Mode that draws the label within the bounds of the view. -->
+      <enum name="withinBounds" value="1"/>
+      <!-- Mode that prevents the label from being drawn. -->
+      <enum name="gone" value="2"/>
+      <!-- Mode that always draws the label. -->
+      <enum name="visible" value="3"/>
+    </attr>
+    <!-- The style used for the label TooltipDrawable. -->
+    <attr name="labelStyle" format="reference" />
+    <!-- The color of the slider's thumb. -->
+    <attr name="thumbColor" format="color" />
+    <!-- The elevation of the thumb. -->
+    <attr name="thumbElevation" format="dimension" />
+    <!-- The width of the thumb. -->
+    <attr name="thumbWidth" format="dimension" />
+    <!-- The height of the thumb. -->
+    <attr name="thumbHeight" format="dimension" />
+    <!-- The radius of the thumb. -->
+    <attr name="thumbRadius" format="dimension" />
+    <!-- The stroke color for the thumb. -->
+    <attr name="thumbStrokeColor" format="color" />
+    <!-- The stroke width for the thumb. -->
+    <attr name="thumbStrokeWidth" format="dimension" />
+    <!-- The size of the gap between the thumb and the track. -->
+    <attr name="thumbTrackGapSize" format="dimension"/>
+    <!-- The minimum size of the thumb's touch target. -->
+    <attr name="minTouchTargetSize"/>
+    <!-- The color of the slider's tick marks. Only used when the slider is in discrete mode. -->
+    <attr name="tickColor" format="color" />
+    <!-- The color of the slider's tick marks for the active portion of the track. Only used when
+         the slider is in discrete mode. -->
+    <attr name="tickColorActive" format="color" />
+    <!-- The color of the slider's tick marks for the inactive portion of the track. Only used when
+         the slider is in discrete mode. -->
+    <attr name="tickColorInactive" format="color" />
+    <!-- The radius of the active tick. Only used when the slider is in discrete mode.-->
+    <attr name="tickRadiusActive" format="dimension" />
+    <!-- The radius of the inactive tick. Only used when the slider is in discrete mode.-->
+    <attr name="tickRadiusInactive" format="dimension" />
+    <!-- Whether to show the tick marks. Only used when the slider is in discrete mode.
+         {@deprecated Use tickVisibilityMode instead.} -->
+    <attr name="tickVisible" format="boolean" />
+    <!-- Mode to specify the visibility of tick marks. Only used when the slider is in
+         discrete mode. -->
+    <attr name="tickVisibilityMode" format="enum">
+      <!-- All tick marks will be drawn if they are not spaced too densely. Otherwise,
+           the maximum allowed number of tick marks will be drawn.
+           Note that in this case the drawn ticks may not match the actual snap values. -->
+      <enum name="autoLimit" value="0" />
+      <!-- All tick marks will be drawn if they are not spaced too densely. Otherwise,
+           the tick marks will not be drawn. -->
+      <enum name="autoHide" value="1" />
+      <!-- Tick marks will not be drawn. -->
+      <enum name="hidden" value="2" />
+    </attr>
+    <!-- The color of the track. -->
+    <attr name="trackColor" />
+    <!-- The color of active portion of the track. -->
+    <attr name="trackColorActive" format="color" />
+    <!-- The color of inactive portion of the track. -->
+    <attr name="trackColorInactive" format="color" />
+    <!-- The height of the track. -->
+    <attr name="trackHeight" format="dimension" />
+    <!-- The start icon on the active portion of the track. -->
+    <attr name="trackIconActiveStart" format="reference" />
+    <!-- The end icon on the active portion of the track. -->
+    <attr name="trackIconActiveEnd" format="reference" />
+    <!-- The color of the icon on the active portion of the track. -->
+    <attr name="trackIconActiveColor" format="color" />
+    <!-- The start icon on the inactive portion of the track. -->
+    <attr name="trackIconInactiveStart" format="reference" />
+    <!-- The end icon on the inactive portion of the track. -->
+    <attr name="trackIconInactiveEnd" format="reference" />
+    <!-- The color of the icon on the inactive portion of the track. -->
+    <attr name="trackIconInactiveColor" format="color" />
+    <!-- The size of the icons of the track. -->
+    <attr name="trackIconSize" format="dimension" />
+    <!-- The corner size on the outside of the track. -->
+    <attr name="trackCornerSize" format="dimension" />
+    <!-- The corner size on the inside of the track (visible with gap). -->
+    <attr name="trackInsideCornerSize" format="dimension" />
+    <!-- The size of the stop indicator at the edges of the track. -->
+    <attr name="trackStopIndicatorSize" />
+  </declare-styleable>
+
+  <declare-styleable name="RangeSlider">
+    <attr name="values" format="reference" />
+
+    <!-- If there is more than one thumb, and the slider is
+         not discrete the thumbs will be separated by this dimen -->
+    <attr name="minSeparation" format="dimension"/>
+  </declare-styleable>
+
+  <!-- Style to use for Slider in this theme. -->
+  <attr name="sliderStyle" format="reference" />
+
+</resources>

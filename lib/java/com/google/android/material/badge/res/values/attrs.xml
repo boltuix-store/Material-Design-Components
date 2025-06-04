@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2019 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+
+  <!-- Style to use for Badges in this theme. -->
+  <attr name="badgeStyle" format="reference"/>
+
+  <declare-styleable name="Badge">
+    <!-- The radius of a badge without text (a "dot"). Deprecated, use badgeWidth
+          and badgeHeight instead. If set, will override badge width/height. -->
+    <attr name="badgeRadius" format="dimension"/>
+    <!-- Start and end padding for a badge that is oblong due to long text. -->
+    <attr name="badgeWidePadding" format="dimension"/>
+    <!-- Top and bottom padding for a badge that is tall due to large text. -->
+    <attr name="badgeVerticalPadding" format="dimension"/>
+    <!-- Radius of a badge with text. Deprecated, use badgeWithTextWidth and badgeWithTextHeight
+          instead. If set, will override badge with text's width/height. -->
+    <attr name="badgeWithTextRadius" format="dimension"/>
+    <!-- Width of the badge without text. -->
+    <attr name="badgeWidth" format="dimension"/>
+    <!-- Width of the badge with text. -->
+    <attr name="badgeWithTextWidth" format="dimension"/>
+    <!-- Height of the badge without text. -->
+    <attr name="badgeHeight" format="dimension"/>
+    <!-- Height of the badge with text. -->
+    <attr name="badgeWithTextHeight" format="dimension"/>
+    <attr name="backgroundColor" format="color"/>
+    <attr name="badgeTextColor" format="color"/>
+    <attr name="maxCharacterCount" format="integer"/>
+    <attr name="maxNumber" format="integer"/>
+    <attr name="badgeText" format="string"/>
+    <attr name="number" format="integer"/>
+    <attr name="badgeGravity">
+      <!-- Gravity.TOP | Gravity.END -->
+      <enum name="TOP_END" value ="8388661"/>
+      <!-- Gravity.TOP | Gravity.START -->
+      <enum name="TOP_START" value ="8388659"/>
+      <!-- Gravity.BOTTOM | Gravity.END -->
+      <enum name="BOTTOM_END" value ="8388693"/>
+      <!-- Gravity.BOTTOM | Gravity.START -->
+      <enum name="BOTTOM_START" value ="8388691"/>
+    </attr>
+    <!-- A reference to a TextAppearance style to be applied to badge text. -->
+    <attr name="badgeTextAppearance" format="reference"/>
+    <!-- Shape appearance style reference for the badge without text (a "dot"). -->
+    <attr name="badgeShapeAppearance" format="reference"/>
+    <!-- Shape appearance overlay style reference for the badge without text (a "dot").
+          To be used to augment attributes declared in the badgeWithTextShapeAppearance. -->
+    <attr name="badgeShapeAppearanceOverlay" format="reference"/>
+    <!-- Shape appearance style reference for the badge with text. -->
+    <attr name="badgeWithTextShapeAppearance" format="reference"/>
+    <!-- Shape appearance overlay style reference for the badge with text.
+          To be used to augment attributes declared in the badgeWithTextShapeAppearance. -->
+    <attr name="badgeWithTextShapeAppearanceOverlay" format="reference"/>
+
+    <!-- Determines where the badge offsets begin in reference to the anchor. -->
+    <attr name="offsetAlignmentMode">
+      <!-- The offsets begin at the edge of the anchor. -->
+      <enum name="edge" value="0"/>
+      <!-- Follows the legacy offset alignment behavior. The horizontal offset begins at a variable
+           permanent inset from the edge of the anchor, and the vertical offset begins at the center
+           of the badge aligned with the edge of the anchor. -->
+      <enum name="legacy" value="1"/>
+    </attr>
+
+    <!-- Offsets the badge horizontally towards the center of its anchor when
+        the badge doesn't have text (is a "dot"). Defaults to 0. -->
+    <attr name="horizontalOffset" format="dimension"/>
+    <!-- Offsets the badge vertically towards the center of its anchor when the
+         badge doesn't have text (is a "dot"). Defaults to 0. -->
+    <attr name="verticalOffset" format="dimension"/>
+    <!-- Offsets the badge horizontally towards the center of its anchor when
+         the badge has text. If this is not defined, it will default to
+         horizontalOffset's value. -->
+    <attr name="horizontalOffsetWithText" format="dimension"/>
+    <!-- Offsets the badge vertically towards the center of its anchor when the
+         badge has text. If this is not defined, it will default to
+         verticalOffset's value. -->
+    <attr name="verticalOffsetWithText" format="dimension"/>
+    <!-- How much to move the verticalOffsetWithText away from the center by
+         when the badge has text and the font is large. When the font is large,
+         we may want to shift the badge away from the center for more readability. This
+         attribute determines how much to shift the normal vertical offset by. -->
+    <attr name="largeFontVerticalOffsetAdjustment" format="dimension"/>
+    <!-- Automatically move the badge so it is within the anchor view's
+         grandparent's bounds. Deprecated, badges are now automatically moved to
+         within the first ancestor that clips its children. -->
+    <attr name="autoAdjustToWithinGrandparentBounds" format="boolean"/>
+    <!-- The edge of the badge that is fixed and does not grow along with the
+         badge.-->
+    <attr name="badgeFixedEdge">
+      <!-- The start of the badge is fixed and it grows towards the end. -->
+      <enum name="start" value="0"/>
+      <!-- The end of the badge is fixed and it grows towards the start. -->
+      <enum name="end" value="1"/>
+    </attr>
+  </declare-styleable>
+
+</resources>
