@@ -17,7 +17,7 @@ plugins {
 dependencies {
 
   // Align kotlin versions
-  implementation(platform('org.jetbrains.kotlin:kotlin-bom:2.1.0'))
+  implementation(platform('org.jetbrains.kotlin:kotlin-bom:2.1.21'))
 
   api libs.dagger
   annotationProcessor libs.dagger.compiler
